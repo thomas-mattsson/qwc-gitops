@@ -37,8 +37,6 @@ volumeMounts: &common-volume-mounts
 ports: &common-ports
   http:
     containerPort: 9090
-    name: http
-    protocol: TCP
     # hostIP: 127.0.0.1
 
 env: &common-env
