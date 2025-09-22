@@ -2,12 +2,12 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 helmCharts:
-  - name: qwc
-    repo: https://camptocamp.github.io/helm-qwc-services/
-    version: 1.0.6
-    releaseName: qwc
-    namespace: qwc
-    valuesFile: values.yaml
+- name: qwc
+  namespace: qwc
+  releaseName: qwc
+  repo: https://camptocamp.github.io/helm-qwc-services/
+  valuesFile: values.yaml
+  version: 1.0.6
 
-patchesStrategicMerge:
-  - remove-hostip-patch.yaml
+patches:
+- path: remove-hostip-patch.yaml
