@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qwc
+spec:
+  template:
+    spec:
+      containers:
+        - name: uwsgi
+          ports:
+            http:
+              hostIP: null
