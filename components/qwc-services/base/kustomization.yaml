@@ -5,7 +5,7 @@ helmCharts:
   - name: qwc
     repo: https://camptocamp.github.io/helm-qwc-services/
     version: 1.0.6
-    releaseName: qwc-services
+    releaseName: qwc
     namespace: qwc
     valuesFile: values.yaml
 
