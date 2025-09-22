@@ -1,8 +1,6 @@
 tolerations: []
 podSecurityContext: {}
-securityContext: {
-  allowPrivilegeEscalation: true
-}
+securityContext: {}
 
 service: &common-service-definition
   type: ClusterIP
@@ -163,6 +161,8 @@ qwc:
     # The name of the service account to use.
     # If not set and create is true, a name is generated using the fullname template
     name: qwc
+  securityContext:
+    allowPrivilegeEscalation: true
   services:
     admin-gui:
       enabled: true
