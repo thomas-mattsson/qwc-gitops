@@ -1,6 +1,8 @@
 tolerations: []
 podSecurityContext: {}
-securityContext: {}
+securityContext: {
+  allowPrivilegeEscalation: true
+}
 
 service: &common-service-definition
   type: ClusterIP
