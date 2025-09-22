@@ -98,10 +98,9 @@ qgis:
     # The name of the service account to use.
     # If not set and create is true, a name is generated using the fullname template
     name: qwc
-  podSecurityContext:
-    runAsUser: 33
   securityContext:
     runAsNonRoot: true
+    runAsUser: 33
   services:
     qgis-server:
       enabled: true
@@ -162,9 +161,10 @@ qwc:
     # The name of the service account to use.
     # If not set and create is true, a name is generated using the fullname template
     name: qwc
+  podSecurityContext:
+    fsGroup: 33
   securityContext:
     allowPrivilegeEscalation: true
-    fsGroup: 33
   services:
     admin-gui:
       enabled: true
