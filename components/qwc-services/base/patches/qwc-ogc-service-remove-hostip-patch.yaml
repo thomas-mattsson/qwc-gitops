@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: qwc-legend-service
+  name: qwc-qwc-ogc-service
 spec:
   template:
     spec:

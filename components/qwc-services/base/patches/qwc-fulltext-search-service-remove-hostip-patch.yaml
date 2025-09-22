@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: qwc-auth-service
+  name: qwc-qwc-fulltext-search-service
 spec:
   template:
     spec:

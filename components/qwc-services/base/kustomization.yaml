@@ -10,17 +10,17 @@ helmCharts:
   version: 1.0.6
 
 patches:
-  - qwc-admin-gui-remove-hostip-patch.yaml
-  - qwc-auth-service-remove-hostip-patch.yaml
-  - qwc-config-service-remove-hostip-patch.yaml
-  - qwc-data-service-remove-hostip-patch.yaml
-  - qwc-document-service-remove-hostip-patch.yaml
-  - qwc-elevation-service-remove-hostip-patch.yaml
-  - qwc-feature-info-service-remove-hostip-patch.yaml
-  - qwc-fulltext-search-service-remove-hostip-patch.yaml
-  - qwc-mapinfo-service-remove-hostip-patch.yaml
-  - qwc-legend-service-remove-hostip-patch.yaml
-  - qwc-print-service-remove-hostip-patch.yaml
-  - qwc-map-viewer-remove-hostip-patch.yaml
-  - qwc-ogc-service-remove-hostip-patch.yaml
-  - qwc-permalink-service-remove-hostip-patch.yaml
+- path: patches/qwc-admin-gui-remove-hostip-patch.yaml
+- path: patches/qwc-auth-service-remove-hostip-patch.yaml
+- path: patches/qwc-config-service-remove-hostip-patch.yaml
+- path: patches/qwc-data-service-remove-hostip-patch.yaml
+- path: patches/qwc-document-service-remove-hostip-patch.yaml
+- path: patches/qwc-elevation-service-remove-hostip-patch.yaml
+- path: patches/qwc-feature-info-service-remove-hostip-patch.yaml
+- path: patches/qwc-fulltext-search-service-remove-hostip-patch.yaml
+- path: patches/qwc-mapinfo-service-remove-hostip-patch.yaml
+- path: patches/qwc-legend-service-remove-hostip-patch.yaml
+- path: patches/qwc-print-service-remove-hostip-patch.yaml
+- path: patches/qwc-map-viewer-remove-hostip-patch.yaml
+- path: patches/qwc-ogc-service-remove-hostip-patch.yaml
+- path: patches/qwc-permalink-service-remove-hostip-patch.yaml

@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: qwc-print-service
+  name: qwc-qwc-map-viewer
 spec:
   template:
     spec:

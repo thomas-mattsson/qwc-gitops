@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: qwc-ogc-service
+  name: qwc-qwc-print-service
 spec:
   template:
     spec:

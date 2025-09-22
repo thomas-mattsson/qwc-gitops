@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: qwc-mapinfo-service
+  name: qwc-qwc-document-service
 spec:
   template:
     spec:

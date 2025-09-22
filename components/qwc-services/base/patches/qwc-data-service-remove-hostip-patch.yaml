@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: qwc-elevation-service
+  name: qwc-qwc-data-service
 spec:
   template:
     spec:

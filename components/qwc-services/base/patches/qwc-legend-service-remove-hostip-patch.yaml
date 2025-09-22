@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: qwc-admin-gui
+  name: qwc-qwc-legend-service
 spec:
   template:
     spec:
