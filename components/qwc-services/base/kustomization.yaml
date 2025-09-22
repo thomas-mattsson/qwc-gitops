@@ -9,5 +9,5 @@ helmCharts:
     namespace: qwc
     valuesFile: values.yaml
 
-#patchesStrategicMerge:
-#  - remove-hostip-patch.yaml
+patchesStrategicMerge:
+  - remove-hostip-patch.yaml
