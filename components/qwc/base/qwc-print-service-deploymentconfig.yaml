@@ -24,8 +24,6 @@ spec:
               value: Strict
             - name: JWT_SECRET_KEY
               value: my-secret-key
-            - name: SERVICE_GID
-              value: "0"
             - name: SERVICE_MOUNTPOINT
               value: /api/v1/print
           image: ' '

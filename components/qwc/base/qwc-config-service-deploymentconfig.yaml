@@ -30,8 +30,6 @@ spec:
               value: my-secret-key
             - name: OUTPUT_CONFIG_PATH
               value: /srv/qwc_service/config-out
-            - name: SERVICE_GID
-              value: "0"
           image: ' '
           name: qwc-config-service
           volumeMounts:
