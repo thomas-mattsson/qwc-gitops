@@ -34,7 +34,7 @@ spec:
             - containerPort: 5432
               protocol: TCP
           volumeMounts:
-            - mountPath: /var/lib/postgresql/docker
+            - mountPath: /var/lib/postgresql
               name: qwc-postgis-claim0
             - mountPath: /docker-entrypoint-initdb.d/2_setup-demo-data.sh
               name: qwc-postgis-cm1
