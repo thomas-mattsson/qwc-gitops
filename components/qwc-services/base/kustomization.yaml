@@ -4,7 +4,7 @@ kind: Kustomization
 helmCharts:
 - name: qwc
   namespace: qwc
-  releaseName: ""
+  releaseName: qwc
   repo: https://camptocamp.github.io/helm-qwc-services/
   valuesFile: values.yaml
   version: 1.0.6
