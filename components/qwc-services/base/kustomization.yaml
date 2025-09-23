@@ -9,6 +9,10 @@ helmCharts:
   valuesFile: values.yaml
   version: 1.0.6
 
+resources:
+- nginx/nginx-cm.yaml
+- nginx/nginx-deployment.yaml
+
 patches:
 - path: patches/qwc-admin-gui-remove-hostip-patch.yaml
 - path: patches/qwc-auth-service-remove-hostip-patch.yaml
