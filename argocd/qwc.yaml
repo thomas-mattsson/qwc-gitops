@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: qwc
+  namespace: openshift-gitops
 spec:
   source:
     repoURL: https://github.com/thomas-mattsson/qwc-gitops.git
@@ -9,7 +10,7 @@ spec:
     targetRevision: main
   destination:
     server: https://kubernetes.default.svc
-    namespace: qwc
+    namespace: qwc-services
   project: default
   syncPolicy:
     automated:

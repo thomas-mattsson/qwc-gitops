@@ -15,6 +15,7 @@ spec:
       labels:
         io.kompose.service: qwc-admin-gui
     spec:
+      serviceAccountName: qwc-sa
       containers:
         - env:
             - name: DEFAULT_LOCALE

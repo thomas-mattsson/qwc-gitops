@@ -15,6 +15,7 @@ spec:
       labels:
         io.kompose.service: qwc-config-service
     spec:
+      serviceAccountName: qwc-sa
       containers:
         - env:
             - name: GENERATE_DYNAMIC_KVRELS

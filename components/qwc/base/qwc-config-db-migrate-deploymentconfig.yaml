@@ -15,6 +15,7 @@ spec:
       labels:
         io.kompose.service: qwc-config-db-migrate
     spec:
+      serviceAccountName: qwc-sa
       containers:
         - image: ' '
           name: qwc-config-db-migrate

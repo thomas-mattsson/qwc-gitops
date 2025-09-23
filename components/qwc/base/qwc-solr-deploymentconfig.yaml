@@ -15,6 +15,7 @@ spec:
       labels:
         io.kompose.service: qwc-solr
     spec:
+      serviceAccountName: qwc-sa
       containers:
         - command:
             - docker-entrypoint.sh

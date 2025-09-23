@@ -15,6 +15,7 @@ spec:
       labels:
         io.kompose.service: qwc-data-service
     spec:
+      serviceAccountName: qwc-sa
       containers:
         - env:
             - name: ATTACHMENTS_BASE_DIR

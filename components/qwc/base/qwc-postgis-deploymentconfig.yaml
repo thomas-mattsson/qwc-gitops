@@ -15,6 +15,7 @@ spec:
       labels:
         io.kompose.service: qwc-postgis
     spec:
+      serviceAccountName: qwc-sa
       containers:
         - env:
             - name: POSTGRES_PASSWORD

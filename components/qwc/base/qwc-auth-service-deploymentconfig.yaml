@@ -15,6 +15,7 @@ spec:
       labels:
         io.kompose.service: qwc-auth-service
     spec:
+      serviceAccountName: qwc-sa
       containers:
         - env:
             - name: JWT_COOKIE_CSRF_PROTECT
