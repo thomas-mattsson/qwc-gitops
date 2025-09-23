@@ -15,6 +15,8 @@ spec:
       labels:
         io.kompose.service: qwc-qgis-server
     spec:
+      securityContext:
+        fsGroup: 33
       serviceAccountName: qwc-sa
       containers:
         - env:
@@ -28,6 +30,7 @@ spec:
             # - mountPath: /data
             #   name: qwc-qgis-server-cm0
             #   readOnly: true
+            # Copying file into PVC instead since too big for config map
             - mountPath: /data
               name: qwc-qgis-server-pvc
             - mountPath: /etc/postgresql-common/pg_service.conf
