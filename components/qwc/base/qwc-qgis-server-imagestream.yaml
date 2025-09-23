@@ -1,0 +1,16 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  labels:
+    io.kompose.service: qwc-qgis-server
+  name: qwc-qgis-server
+spec:
+  lookupPolicy:
+    local: false
+  tags:
+    - from:
+        kind: DockerImage
+        name: sourcepole/qwc-qgis-server:3.40
+      name: "3.40"
+      referencePolicy:
+        type: ""

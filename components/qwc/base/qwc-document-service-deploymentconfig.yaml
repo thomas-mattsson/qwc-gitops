@@ -1,0 +1,71 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    io.kompose.service: qwc-document-service
+  name: qwc-document-service
+spec:
+  replicas: 1
+  selector:
+    io.kompose.service: qwc-document-service
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        io.kompose.service: qwc-document-service
+    spec:
+      containers:
+        - env:
+            - name: JWT_COOKIE_CSRF_PROTECT
+              value: "True"
+            - name: JWT_COOKIE_SAMESITE
+              value: Strict
+            - name: JWT_SECRET_KEY
+              value: my-secret-key
+            - name: SERVICE_GID
+              value: "0"
+            - name: SERVICE_MOUNTPOINT
+              value: /api/v1/document
+          image: ' '
+          name: qwc-document-service
+          volumeMounts:
+            - mountPath: /srv/pg_service.conf
+              name: qwc-document-service-cm0
+              readOnly: true
+              subPath: pg_service.conf
+            - mountPath: /reports
+              name: qwc-document-service-cm1
+            - mountPath: /srv/qwc_service/fonts
+              name: qwc-document-service-claim2
+            - mountPath: /srv/qwc_service/config
+              name: qwc-document-service-cm3
+              readOnly: true
+      restartPolicy: Always
+      volumes:
+        - configMap:
+            items:
+              - key: pg_service.conf
+                path: pg_service.conf
+            name: qwc-document-service-cm0
+          name: qwc-document-service-cm0
+        - configMap:
+            name: qwc-document-service-cm1
+          name: qwc-document-service-cm1
+        - name: qwc-document-service-claim2
+          persistentVolumeClaim:
+            claimName: qwc-document-service-claim2
+        - configMap:
+            name: qwc-document-service-cm3
+          name: qwc-document-service-cm3
+  test: false
+  triggers:
+    - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+          - qwc-document-service
+        from:
+          kind: ImageStreamTag
+          name: qwc-document-service:latest-2025-lts
+      type: ImageChange

@@ -1,0 +1,85 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    io.kompose.service: qwc-qgis-server
+  name: qwc-qgis-server
+spec:
+  replicas: 1
+  selector:
+    io.kompose.service: qwc-qgis-server
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        io.kompose.service: qwc-qgis-server
+    spec:
+      containers:
+        - env:
+            - name: FCGID_EXTRA_ENV
+              value: PRINT_LAYOUT_DIR
+            - name: PRINT_LAYOUT_DIR
+              value: /layouts
+          image: ' '
+          name: qwc-qgis-server
+          volumeMounts:
+            - mountPath: /data
+              name: qwc-qgis-server-cm0
+              readOnly: true
+            - mountPath: /etc/postgresql-common/pg_service.conf
+              name: qwc-qgis-server-cm1
+              readOnly: true
+              subPath: pg_service.conf
+            - mountPath: /usr/share/qgis/python/plugins/print_templates
+              name: qwc-qgis-server-cm2
+              readOnly: true
+            - mountPath: /usr/share/qgis/python/plugins/split_categorized
+              name: qwc-qgis-server-cm3
+              readOnly: true
+            - mountPath: /usr/share/qgis/python/plugins/filter_geom
+              name: qwc-qgis-server-cm4
+              readOnly: true
+            - mountPath: /usr/share/qgis/python/plugins/clear_capabilities
+              name: qwc-qgis-server-cm5
+              readOnly: true
+            - mountPath: /layouts
+              name: qwc-qgis-server-cm6
+              readOnly: true
+      restartPolicy: Always
+      volumes:
+        - configMap:
+            name: qwc-qgis-server-cm0
+          name: qwc-qgis-server-cm0
+        - configMap:
+            items:
+              - key: pg_service.conf
+                path: pg_service.conf
+            name: qwc-qgis-server-cm1
+          name: qwc-qgis-server-cm1
+        - configMap:
+            name: qwc-qgis-server-cm2
+          name: qwc-qgis-server-cm2
+        - configMap:
+            name: qwc-qgis-server-cm3
+          name: qwc-qgis-server-cm3
+        - configMap:
+            name: qwc-qgis-server-cm4
+          name: qwc-qgis-server-cm4
+        - configMap:
+            name: qwc-qgis-server-cm5
+          name: qwc-qgis-server-cm5
+        - configMap:
+            name: qwc-qgis-server-cm6
+          name: qwc-qgis-server-cm6
+  test: false
+  triggers:
+    - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+          - qwc-qgis-server
+        from:
+          kind: ImageStreamTag
+          name: qwc-qgis-server:3.40
+      type: ImageChange

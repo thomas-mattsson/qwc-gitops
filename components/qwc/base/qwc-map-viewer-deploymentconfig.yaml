@@ -1,0 +1,67 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    io.kompose.service: qwc-map-viewer
+  name: qwc-map-viewer
+spec:
+  replicas: 1
+  selector:
+    io.kompose.service: qwc-map-viewer
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        io.kompose.service: qwc-map-viewer
+    spec:
+      containers:
+        - env:
+            - name: JWT_COOKIE_CSRF_PROTECT
+              value: "True"
+            - name: JWT_COOKIE_SAMESITE
+              value: Strict
+            - name: JWT_SECRET_KEY
+              value: my-secret-key
+            - name: SERVICE_GID
+              value: "0"
+            - name: SERVICE_MOUNTPOINT
+              value: /
+          image: ' '
+          name: qwc-map-viewer
+          volumeMounts:
+            - mountPath: /srv/pg_service.conf
+              name: qwc-map-viewer-cm0
+              readOnly: true
+              subPath: pg_service.conf
+            - mountPath: /srv/qwc_service/config
+              name: qwc-map-viewer-cm1
+              readOnly: true
+            - mountPath: /qwc2/assets
+              name: qwc-map-viewer-cm2
+              readOnly: true
+      restartPolicy: Always
+      volumes:
+        - configMap:
+            items:
+              - key: pg_service.conf
+                path: pg_service.conf
+            name: qwc-map-viewer-cm0
+          name: qwc-map-viewer-cm0
+        - configMap:
+            name: qwc-map-viewer-cm1
+          name: qwc-map-viewer-cm1
+        - configMap:
+            name: qwc-map-viewer-cm2
+          name: qwc-map-viewer-cm2
+  test: false
+  triggers:
+    - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+          - qwc-map-viewer
+        from:
+          kind: ImageStreamTag
+          name: qwc-map-viewer:latest-2025-lts
+      type: ImageChange

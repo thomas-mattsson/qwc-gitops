@@ -1,0 +1,61 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    io.kompose.service: qwc-fulltext-search-service
+  name: qwc-fulltext-search-service
+spec:
+  replicas: 1
+  selector:
+    io.kompose.service: qwc-fulltext-search-service
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        io.kompose.service: qwc-fulltext-search-service
+    spec:
+      containers:
+        - env:
+            - name: JWT_COOKIE_CSRF_PROTECT
+              value: "True"
+            - name: JWT_COOKIE_SAMESITE
+              value: Strict
+            - name: JWT_SECRET_KEY
+              value: my-secret-key
+            - name: SERVICE_GID
+              value: "0"
+            - name: SERVICE_MOUNTPOINT
+              value: /api/v2/search
+          image: ' '
+          name: qwc-fulltext-search-service
+          volumeMounts:
+            - mountPath: /srv/pg_service.conf
+              name: qwc-fulltext-search-service-cm0
+              readOnly: true
+              subPath: pg_service.conf
+            - mountPath: /srv/qwc_service/config
+              name: qwc-fulltext-search-service-cm1
+              readOnly: true
+      restartPolicy: Always
+      volumes:
+        - configMap:
+            items:
+              - key: pg_service.conf
+                path: pg_service.conf
+            name: qwc-fulltext-search-service-cm0
+          name: qwc-fulltext-search-service-cm0
+        - configMap:
+            name: qwc-fulltext-search-service-cm1
+          name: qwc-fulltext-search-service-cm1
+  test: false
+  triggers:
+    - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+          - qwc-fulltext-search-service
+        from:
+          kind: ImageStreamTag
+          name: qwc-fulltext-search-service:latest-2025-lts
+      type: ImageChange

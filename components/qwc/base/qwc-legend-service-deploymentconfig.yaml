@@ -1,0 +1,51 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    io.kompose.service: qwc-legend-service
+  name: qwc-legend-service
+spec:
+  replicas: 1
+  selector:
+    io.kompose.service: qwc-legend-service
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        io.kompose.service: qwc-legend-service
+    spec:
+      containers:
+        - env:
+            - name: JWT_COOKIE_CSRF_PROTECT
+              value: "True"
+            - name: JWT_COOKIE_SAMESITE
+              value: Strict
+            - name: JWT_SECRET_KEY
+              value: my-secret-key
+            - name: SERVICE_GID
+              value: "0"
+            - name: SERVICE_MOUNTPOINT
+              value: /api/v1/legend
+          image: ' '
+          name: qwc-legend-service
+          volumeMounts:
+            - mountPath: /srv/qwc_service/config
+              name: qwc-legend-service-cm0
+              readOnly: true
+      restartPolicy: Always
+      volumes:
+        - configMap:
+            name: qwc-legend-service-cm0
+          name: qwc-legend-service-cm0
+  test: false
+  triggers:
+    - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+          - qwc-legend-service
+        from:
+          kind: ImageStreamTag
+          name: qwc-legend-service:latest-2025-lts
+      type: ImageChange

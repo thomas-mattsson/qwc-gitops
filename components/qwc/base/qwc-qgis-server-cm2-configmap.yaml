@@ -1,0 +1,31 @@
+apiVersion: v1
+data:
+  __init__.py: |
+    #
+    # Copyright (c) 2023-2024 Sandro Mani, Sourcepole AG
+    #
+    # This program is free software: you can redistribute it and/or modify
+    # it under the terms of the GNU General Public License as published by
+    # the Free Software Foundation, version 3.
+    #
+    # This program is distributed in the hope that it will be useful, but
+    # WITHOUT ANY WARRANTY; without even the implied warranty of
+    # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    # General Public License for more details.
+    #
+    # You should have received a copy of the GNU General Public License
+    # along with this program. If not, see <http://www.gnu.org/licenses/>.
+    #
+
+    from .print_templates import PrintTemplates
+
+
+    def serverClassFactory(serverIface):
+        return PrintTemplates(serverIface)
+  metadata.txt: "[general]\nname=PrintTemplates\nqgisMinimumVersion=3.4\nqgisMaximumVersion=3.99\ndescription=A plugin to add print templates to QGIS server and use them in GetPrint \nversion=version 1.0\nauthor=Marco Hugentobler\nemail=marco.hugentobler@sourcepole.ch\nserver=True\n"
+  print_templates.py: "#\n# Copyright (c) 2023-2024 Sandro Mani, Sourcepole AG\n#\n# This program is free software: you can redistribute it and/or modify\n# it under the terms of the GNU General Public License as published by\n# the Free Software Foundation, version 3.\n#\n# This program is distributed in the hope that it will be useful, but\n# WITHOUT ANY WARRANTY; without even the implied warranty of\n# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU\n# General Public License for more details.\n#\n# You should have received a copy of the GNU General Public License\n# along with this program. If not, see <http://www.gnu.org/licenses/>.\n#\n\nfrom qgis.core import *\nfrom qgis.server import *\nfrom qgis.PyQt.QtCore import QFile, QIODevice\nfrom qgis.PyQt.QtXml import QDomDocument\nimport os\n\nclass PrintTemplatesFilter(QgsServerFilter):\n    def __init__(self, serverIface):\n        super(PrintTemplatesFilter, self).__init__(serverIface)\n        self.__layouts = []\n        self.__project = None\n        \n    def onRequestReady(self):\n        \n        #Only add print layouts for GetProjectSettings and for GetPrint\n        request = self.serverInterface().requestHandler()\n        requestParam = request.parameter('REQUEST').upper()\n        if requestParam != 'GETPRINT': # and requestParam != 'GETPROJECTSETTINGS':\n            return True\n        \n        template = request.parameter('TEMPLATE')\n        parts = template.split(\"/\")\n        subdirpath = \"/\".join(parts[0:-1])\n        templateName = parts[-1]\n        request.setParameter('TEMPLATE', templateName)\n        \n        projectPath = self.serverInterface().configFilePath()\n        self.__project = QgsConfigCache.instance().project( projectPath )\n\n        if 'PRINT_LAYOUT_DIR' not in os.environ:\n            QgsMessageLog.logMessage('PRINT_LAYOUT_DIR not set', 'plugin', Qgis.MessageLevel.Warning)\n            return True\n\n        QgsMessageLog.logMessage('Looking for templates in %s' % os.environ.get('PRINT_LAYOUT_DIR', ''), 'plugin', Qgis.MessageLevel.Info)\n        \n        layoutDir = os.path.join(os.environ['PRINT_LAYOUT_DIR'], subdirpath)\n        for f in os.listdir(layoutDir):\n            layoutFile = QFile(os.path.join(layoutDir,f))\n            if not layoutFile.open( QIODevice.ReadOnly ):\n                QgsMessageLog.logMessage('Opening file failed', 'plugin', Qgis.MessageLevel.Critical)\n                continue\n            domDoc = QDomDocument()\n            if not domDoc.setContent(layoutFile):\n                QgsMessageLog.logMessage('Reading xml document failed', 'plugin', Qgis.MessageLevel.Critical)\n                continue\n\n            #Check if template name maches template parameter in request\n            if not domDoc.documentElement().attribute('name') == templateName:\n                continue\n\n            layout = QgsPrintLayout(self.__project)\n            if not layout.readXml( domDoc.documentElement(), domDoc, QgsReadWriteContext() ):\n                QgsMessageLog.logMessage('Reading layout failed', 'plugin', Qgis.MessageLevel.Critical)\n            else:\n                QgsMessageLog.logMessage('Reading of layout was successfull', 'plugin', Qgis.MessageLevel.Info)\n\n            if not self.__project.layoutManager().addLayout(layout):\n                QgsMessageLog.logMessage('Could not add layout to project', 'plugin', Qgis.MessageLevel.Critical)\n\n            self.__layouts.append(layout)\n            break\n        \n        return True\n    \n    def onResponseComplete(self):\n        for layout in self.__layouts:\n            self.__project.layoutManager().removeLayout(layout)\n            \n        self.__layouts.clear()\n        self.__project = None\n        \n        return True\n\nclass PrintTemplates:\n    def __init__(self, serverIface):\n        self.iface = serverIface\n        serverIface.registerFilter(PrintTemplatesFilter(serverIface))\n"
+kind: ConfigMap
+metadata:
+  labels:
+    io.kompose.service: qwc-qgis-server
+  name: qwc-qgis-server-cm2

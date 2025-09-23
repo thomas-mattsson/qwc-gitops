@@ -1,0 +1,16 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  labels:
+    io.kompose.service: qwc-admin-gui
+  name: qwc-admin-gui
+spec:
+  lookupPolicy:
+    local: false
+  tags:
+    - from:
+        kind: DockerImage
+        name: sourcepole/qwc-admin-gui:latest-2025-lts
+      name: latest-2025-lts
+      referencePolicy:
+        type: ""
