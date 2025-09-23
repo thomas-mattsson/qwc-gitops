@@ -1,0 +1,209 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: qwc-qgis-server
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: http
+  selector:
+    io.kompose.service: qwc-qgis-service
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: qwc-admin-gui
+spec:
+  ports:
+  - name: http
+    port: 9090
+    protocol: TCP
+    targetPort: http
+  selector:
+    io.kompose.service: qwc-admin-gui
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: qwc-auth-service
+spec:
+  ports:
+  - name: http
+    port: 9090
+    protocol: TCP
+    targetPort: http
+  selector:
+    io.kompose.service: qwc-auth-service
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: qwc-config-service
+spec:
+  ports:
+  - name: http
+    port: 9090
+    protocol: TCP
+    targetPort: http
+  selector:
+    io.kompose.service: qwc-config-service
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: qwc-data-service
+spec:
+  ports:
+  - name: http
+    port: 9090
+    protocol: TCP
+    targetPort: http
+  selector:
+    io.kompose.service: qwc-data-service
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: qwc-document-service
+spec:
+  ports:
+  - name: http
+    port: 9090
+    protocol: TCP
+    targetPort: http
+  selector:
+    io.kompose.service: qwc-document-service
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: qwc-elevation-service
+spec:
+  ports:
+  - name: http
+    port: 9090
+    protocol: TCP
+    targetPort: http
+  selector:
+    io.kompose.service: qwc-elevation-service
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: qwc-feature-info-service
+spec:
+  ports:
+  - name: http
+    port: 9090
+    protocol: TCP
+    targetPort: http
+  selector:
+    io.kompose.service: qwc-feature-info-service
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: qwc-fulltext-search-service
+spec:
+  ports:
+  - name: http
+    port: 9090
+    protocol: TCP
+    targetPort: http
+  selector:
+    io.kompose.service: qwc-fulltext-search-service
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: qwc-legend-service
+spec:
+  ports:
+  - name: http
+    port: 9090
+    protocol: TCP
+    targetPort: http
+  selector:
+    io.kompose.service: qwc-legend-service
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: qwc-map-viewer
+spec:
+  ports:
+  - name: http
+    port: 9090
+    protocol: TCP
+    targetPort: http
+  selector:
+    io.kompose.service: qwc-map-service
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: qwc-mapinfo-service
+spec:
+  ports:
+  - name: http
+    port: 9090
+    protocol: TCP
+    targetPort: http
+  selector:
+    io.kompose.service: qqwc-mapinfo-service
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: qwc-ogc-service
+spec:
+  ports:
+  - name: http
+    port: 9090
+    protocol: TCP
+    targetPort: http
+  selector:
+    io.kompose.service: qwc-ogc-server
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: qwc-permalink-service
+spec:
+  ports:
+  - name: http
+    port: 9090
+    protocol: TCP
+    targetPort: http
+  selector:
+    io.kompose.service: qwc-permalink-server
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: qwc-print-service
+spec:
+  ports:
+  - name: http
+    port: 9090
+    protocol: TCP
+    targetPort: http
+  selector:
+    io.kompose.service: qwc-print-server
+  type: ClusterIP
