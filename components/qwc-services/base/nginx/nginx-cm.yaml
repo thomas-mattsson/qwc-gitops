@@ -5,7 +5,7 @@ metadata:
 data:
   nginx.conf: |
     server {
-        listen       80;
+        listen       8080;
         server_name  localhost;
         # Increase this if the config-generator returns timeout errors
         proxy_read_timeout 90;
