@@ -5,8 +5,9 @@ metadata:
     io.kompose.service: qwc-postgis-claim0
   name: qwc-postgis-claim0
 spec:
+  storageClassName: ocs-storagecluster-ceph-rbd
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 100Mi
+      storage: 10Gi

@@ -5,8 +5,9 @@ metadata:
     io.kompose.service: qwc-document-service-claim2
   name: qwc-document-service-claim2
 spec:
+  storageClassName: ocs-storagecluster-cephfs
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 100Mi
