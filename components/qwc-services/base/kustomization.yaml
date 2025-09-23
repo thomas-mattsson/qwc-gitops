@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
 - nginx
+- postgres
 
 helmCharts:
 - name: qwc
