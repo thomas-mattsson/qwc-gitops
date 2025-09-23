@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: qwc-postgis
+spec:
+  ports:
+  - port: 5439
+    protocol: TCP
+    targetPort: 5432
+  selector:
+    app: qwc-postgis
