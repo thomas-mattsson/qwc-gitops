@@ -2,6 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - services.yaml
+- qwc-qgis-server-pvc.yaml
 - qwc-admin-gui-cm0-configmap.yaml
 - qwc-admin-gui-cm1-configmap.yaml
 - qwc-admin-gui-deploymentconfig.yaml

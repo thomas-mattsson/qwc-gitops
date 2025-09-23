@@ -28,6 +28,8 @@ spec:
             # - mountPath: /data
             #   name: qwc-qgis-server-cm0
             #   readOnly: true
+            - mountPath: /data
+              name: qwc-qgis-server-pvc
             - mountPath: /etc/postgresql-common/pg_service.conf
               name: qwc-qgis-server-cm1
               readOnly: true
@@ -49,6 +51,9 @@ spec:
               readOnly: true
       restartPolicy: Always
       volumes:
+        - name: qwc-qgis-server-pvc
+          persistentVolumeClaim:
+            claimName: qwc-qgis-server-pvc
         - configMap:
             name: qwc-qgis-server-cm0
           name: qwc-qgis-server-cm0
