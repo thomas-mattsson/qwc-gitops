@@ -21,7 +21,7 @@ resources:
 - qwc-config-service-cm0-configmap.yaml
 - qwc-config-service-cm1-configmap.yaml
 - qwc-config-service-cm2-configmap.yaml
-- qwc-config-service-cm3-configmap.yaml
+#- qwc-config-service-cm3-configmap.yaml
 - qwc-config-service-cm4-configmap.yaml
 - qwc-config-service-cm5-configmap.yaml
 - qwc-config-service-cm6-configmap.yaml
