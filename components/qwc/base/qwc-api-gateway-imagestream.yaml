@@ -10,7 +10,7 @@ spec:
   tags:
     - from:
         kind: DockerImage
-        name: nginx:1.27
+        name: nginxinc/nginx-unprivileged:alpine3.22-perl
       name: "1.27"
       referencePolicy:
         type: ""
