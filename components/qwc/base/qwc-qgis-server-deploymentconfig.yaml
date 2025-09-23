@@ -25,9 +25,9 @@ spec:
           image: ' '
           name: qwc-qgis-server
           volumeMounts:
-            - mountPath: /data
-              name: qwc-qgis-server-cm0
-              readOnly: true
+            # - mountPath: /data
+            #   name: qwc-qgis-server-cm0
+            #   readOnly: true
             - mountPath: /etc/postgresql-common/pg_service.conf
               name: qwc-qgis-server-cm1
               readOnly: true
