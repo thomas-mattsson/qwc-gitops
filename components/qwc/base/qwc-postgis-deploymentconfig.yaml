@@ -18,7 +18,11 @@ spec:
       serviceAccountName: qwc-sa
       containers:
         - env:
-            - name: POSTGRES_PASSWORD
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: POSTGRES_PASSWORD
+                name: qwc-postgis-secret
           image: ' '
           livenessProbe:
             exec:
