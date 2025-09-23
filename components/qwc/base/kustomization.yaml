@@ -77,7 +77,7 @@ resources:
 - qwc-print-service-cm0-configmap.yaml
 - qwc-print-service-deploymentconfig.yaml
 - qwc-print-service-imagestream.yaml
-- qwc-qgis-server-cm0-configmap.yaml
+#- qwc-qgis-server-cm0-configmap.yaml
 - qwc-qgis-server-cm1-configmap.yaml
 - qwc-qgis-server-cm2-configmap.yaml
 - qwc-qgis-server-cm3-configmap.yaml
