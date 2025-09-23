@@ -40,8 +40,8 @@ spec:
               name: qwc-config-service-cm1
             - mountPath: /qwc2
               name: qwc-config-service-cm2
-            - mountPath: /data
-              name: qwc-config-service-cm3
+            # - mountPath: /data
+            #   name: qwc-config-service-cm3
             - mountPath: /layouts
               name: qwc-config-service-cm4
               readOnly: true
@@ -62,9 +62,9 @@ spec:
         - configMap:
             name: qwc-config-service-cm2
           name: qwc-config-service-cm2
-        - configMap:
-            name: qwc-config-service-cm3
-          name: qwc-config-service-cm3
+        # - configMap:
+        #     name: qwc-config-service-cm3
+        #   name: qwc-config-service-cm3
         - configMap:
             name: qwc-config-service-cm4
           name: qwc-config-service-cm4
