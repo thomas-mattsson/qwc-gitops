@@ -32,7 +32,7 @@ spec:
         ports:
         - containerPort: 5432
         volumeMounts:
-        - mountPath: /var/lib/postgresql/docker
+        - mountPath: /var/lib/postgresql
           name: db-data
       volumes:
       - name: db-data
