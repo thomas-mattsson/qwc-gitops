@@ -15,9 +15,8 @@ spec:
       labels:
         io.kompose.service: qwc-api-gateway
     spec:
-      serviceAccountName: qwc-sa
       containers:
-        - image: ' '
+        - image: 'nginxinc/nginx-unprivileged:alpine3.22-perl'
           name: qwc-api-gateway
           ports:
             - containerPort: 80
