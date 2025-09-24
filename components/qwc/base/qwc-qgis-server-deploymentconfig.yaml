@@ -17,7 +17,7 @@ spec:
     spec:
       securityContext:
         fsGroup: 33
-      serviceAccountName: qwc-sa
+      serviceAccountName: qwc-sa-nonroot-v2
       containers:
         - env:
             - name: FCGID_EXTRA_ENV
