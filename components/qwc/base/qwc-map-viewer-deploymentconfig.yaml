@@ -61,8 +61,8 @@ spec:
             name: qwc-map-viewer-cm2
           name: qwc-map-viewer-cm2
         - configMap:
-            name: uswgi-ini
-          name: uswgi-ini
+            name: uwsgi-ini
+          name: uwsgi-ini
   test: false
   triggers:
     - type: ConfigChange
