@@ -16,8 +16,6 @@ spec:
         io.kompose.service: qwc-map-viewer
     spec:
       serviceAccountName: qwc-sa
-      securityContext:
-        allowPrivilegeEscalation: true
       containers:
         - env:
             - name: JWT_COOKIE_CSRF_PROTECT
@@ -44,6 +42,10 @@ spec:
             - mountPath: /qwc2/assets
               name: qwc-map-viewer-cm2
               readOnly: true
+            - mountPath: /etc/uwsgi
+              name: uswgi-ini
+              readOnly: true
+              subPath: uwsgi.ini
       restartPolicy: Always
       volumes:
         - configMap:
@@ -58,6 +60,9 @@ spec:
         - configMap:
             name: qwc-map-viewer-cm2
           name: qwc-map-viewer-cm2
+        - configMap:
+            name: uswgi-ini
+          name: uswgi-ini
   test: false
   triggers:
     - type: ConfigChange
