@@ -37,7 +37,7 @@ spec:
             # Copying file into PVC instead since too big for config map
             - mountPath: /data
               name: qwc-qgis-server-pvc
-            - mountPath: /etc/postgresql-common/pg_service.conf
+            # - mountPath: /etc/postgresql-common/pg_service.conf
             #   name: qwc-qgis-server-cm1
             #   readOnly: true
             #   subPath: pg_service.conf
