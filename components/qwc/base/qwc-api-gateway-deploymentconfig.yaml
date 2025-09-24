@@ -19,7 +19,7 @@ spec:
         - image: ''
           name: qwc-api-gateway
           ports:
-            - containerPort: 80
+            - containerPort: 8080
               protocol: TCP
           volumeMounts:
             - mountPath: /etc/nginx/conf.d/default.conf
