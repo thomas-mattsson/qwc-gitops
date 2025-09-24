@@ -16,6 +16,8 @@ spec:
         io.kompose.service: qwc-map-viewer
     spec:
       serviceAccountName: qwc-sa
+      securityContext:
+        allowPrivilegeEscalation: true
       containers:
         - env:
             - name: JWT_COOKIE_CSRF_PROTECT
