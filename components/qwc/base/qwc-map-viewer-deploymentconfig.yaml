@@ -42,7 +42,7 @@ spec:
             - mountPath: /qwc2/assets
               name: qwc-map-viewer-cm2
               readOnly: true
-            - mountPath: /etc/uwsgi
+            - mountPath: /etc/uwsgi/uwsgi.ini
               name: uwsgi-ini
               readOnly: true
               subPath: uwsgi.ini
