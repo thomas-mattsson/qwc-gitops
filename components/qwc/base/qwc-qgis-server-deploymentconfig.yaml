@@ -38,24 +38,24 @@ spec:
             - mountPath: /data
               name: qwc-qgis-server-pvc
             - mountPath: /etc/postgresql-common/pg_service.conf
-              name: qwc-qgis-server-cm1
-              readOnly: true
-              subPath: pg_service.conf
-            - mountPath: /usr/share/qgis/python/plugins/print_templates
-              name: qwc-qgis-server-cm2
-              readOnly: true
-            - mountPath: /usr/share/qgis/python/plugins/split_categorized
-              name: qwc-qgis-server-cm3
-              readOnly: true
-            - mountPath: /usr/share/qgis/python/plugins/filter_geom
-              name: qwc-qgis-server-cm4
-              readOnly: true
-            - mountPath: /usr/share/qgis/python/plugins/clear_capabilities
-              name: qwc-qgis-server-cm5
-              readOnly: true
-            - mountPath: /layouts
-              name: qwc-qgis-server-cm6
-              readOnly: true
+            #   name: qwc-qgis-server-cm1
+            #   readOnly: true
+            #   subPath: pg_service.conf
+            # - mountPath: /usr/share/qgis/python/plugins/print_templates
+            #   name: qwc-qgis-server-cm2
+            #   readOnly: true
+            # - mountPath: /usr/share/qgis/python/plugins/split_categorized
+            #   name: qwc-qgis-server-cm3
+            #   readOnly: true
+            # - mountPath: /usr/share/qgis/python/plugins/filter_geom
+            #   name: qwc-qgis-server-cm4
+            #   readOnly: true
+            # - mountPath: /usr/share/qgis/python/plugins/clear_capabilities
+            #   name: qwc-qgis-server-cm5
+            #   readOnly: true
+            # - mountPath: /layouts
+            #   name: qwc-qgis-server-cm6
+            #   readOnly: true
       restartPolicy: Always
       volumes:
         - name: qwc-qgis-server-pvc
