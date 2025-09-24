@@ -16,7 +16,8 @@ spec:
         io.kompose.service: qwc-qgis-server
     spec:
       securityContext:
-        fsGroup: 33
+        #fsGroup: 33
+        fsGroup: 0
       serviceAccountName: qwc-sa-nonroot-v2
       containers:
         - env:
