@@ -27,6 +27,9 @@ spec:
             - name: SERVICE_MOUNTPOINT
               value: /
           image: ' '
+          ports:
+            - containerPort: 9090
+              protocol: TCP
           name: qwc-map-viewer
           volumeMounts:
             - mountPath: /srv/pg_service.conf
