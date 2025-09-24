@@ -5,7 +5,6 @@ resources:
 - config-pvc.yaml
 - qwc-qgis-server-pvc.yaml
 - qwc-admin-gui-cm0-configmap.yaml
-- qwc-admin-gui-cm1-configmap.yaml
 - qwc-admin-gui-deploymentconfig.yaml
 - qwc-admin-gui-imagestream.yaml
 - qwc-api-gateway-cm0-configmap.yaml
@@ -13,7 +12,6 @@ resources:
 - qwc-api-gateway-imagestream.yaml
 - qwc-api-gateway-service.yaml
 - qwc-auth-service-cm0-configmap.yaml
-- qwc-auth-service-cm1-configmap.yaml
 - qwc-auth-service-deploymentconfig.yaml
 - qwc-auth-service-imagestream.yaml
 - qwc-config-db-migrate-cm0-configmap.yaml
@@ -21,7 +19,6 @@ resources:
 - qwc-config-db-migrate-deploymentconfig.yaml
 - qwc-config-db-migrate-imagestream.yaml
 - qwc-config-service-cm0-configmap.yaml
-- qwc-config-service-cm1-configmap.yaml
 - qwc-config-service-cm2-configmap.yaml
 #- qwc-config-service-cm3-configmap.yaml
 - qwc-config-service-cm4-configmap.yaml
@@ -29,7 +26,6 @@ resources:
 - qwc-config-service-cm6-configmap.yaml
 - qwc-config-service-deploymentconfig.yaml
 - qwc-config-service-imagestream.yaml
-- qwc-data-service-cm0-configmap.yaml
 - qwc-data-service-cm1-configmap.yaml
 - qwc-data-service-cm2-configmap.yaml
 - qwc-data-service-deploymentconfig.yaml
@@ -37,22 +33,17 @@ resources:
 - qwc-document-service-claim2-persistentvolumeclaim.yaml
 - qwc-document-service-cm0-configmap.yaml
 - qwc-document-service-cm1-configmap.yaml
-- qwc-document-service-cm3-configmap.yaml
 - qwc-document-service-deploymentconfig.yaml
 - qwc-document-service-imagestream.yaml
-- qwc-elevation-service-cm0-configmap.yaml
 - qwc-elevation-service-deploymentconfig.yaml
 - qwc-elevation-service-imagestream.yaml
 - qwc-feature-info-service-cm0-configmap.yaml
-- qwc-feature-info-service-cm1-configmap.yaml
 - qwc-feature-info-service-cm2-configmap.yaml
 - qwc-feature-info-service-deploymentconfig.yaml
 - qwc-feature-info-service-imagestream.yaml
 - qwc-fulltext-search-service-cm0-configmap.yaml
-- qwc-fulltext-search-service-cm1-configmap.yaml
 - qwc-fulltext-search-service-deploymentconfig.yaml
 - qwc-fulltext-search-service-imagestream.yaml
-- qwc-legend-service-cm0-configmap.yaml
 - qwc-legend-service-deploymentconfig.yaml
 - qwc-legend-service-imagestream.yaml
 - qwc-map-viewer-cm0-configmap.yaml
@@ -60,14 +51,11 @@ resources:
 - qwc-map-viewer-deploymentconfig.yaml
 - qwc-map-viewer-imagestream.yaml
 - qwc-mapinfo-service-cm0-configmap.yaml
-- qwc-mapinfo-service-cm1-configmap.yaml
 - qwc-mapinfo-service-deploymentconfig.yaml
 - qwc-mapinfo-service-imagestream.yaml
-- qwc-ogc-service-cm0-configmap.yaml
 - qwc-ogc-service-deploymentconfig.yaml
 - qwc-ogc-service-imagestream.yaml
 - qwc-permalink-service-cm0-configmap.yaml
-- qwc-permalink-service-cm1-configmap.yaml
 - qwc-permalink-service-deploymentconfig.yaml
 - qwc-permalink-service-imagestream.yaml
 - qwc-postgis-claim0-persistentvolumeclaim.yaml
@@ -75,7 +63,6 @@ resources:
 - qwc-postgis-deploymentconfig.yaml
 - qwc-postgis-imagestream.yaml
 - qwc-postgis-service.yaml
-- qwc-print-service-cm0-configmap.yaml
 - qwc-print-service-deploymentconfig.yaml
 - qwc-print-service-imagestream.yaml
 #- qwc-qgis-server-cm0-configmap.yaml

@@ -40,8 +40,7 @@ spec:
               readOnly: true
               subPath: pg_service.conf
             - mountPath: /srv/qwc_service/config
-              name: qwc-admin-gui-cm1
-              readOnly: true
+              name: qwc-config-pvc
       restartPolicy: Always
       volumes:
         - configMap:
@@ -50,9 +49,9 @@ spec:
                 path: pg_service.conf
             name: qwc-admin-gui-cm0
           name: qwc-admin-gui-cm0
-        - configMap:
-            name: qwc-admin-gui-cm1
-          name: qwc-admin-gui-cm1
+        - name: qwc-config-pvc
+          persistentVolumeClaim:
+            claimName: qwc-config-pvc
   test: false
   triggers:
     - type: ConfigChange

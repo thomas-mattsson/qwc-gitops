@@ -34,8 +34,7 @@ spec:
               readOnly: true
               subPath: pg_service.conf
             - mountPath: /srv/qwc_service/config
-              name: qwc-feature-info-service-cm1
-              readOnly: true
+              name: qwc-config-pvc
             - mountPath: /info_templates/gwc-demo
               name: qwc-feature-info-service-cm2
               readOnly: true
@@ -48,11 +47,11 @@ spec:
             name: qwc-feature-info-service-cm0
           name: qwc-feature-info-service-cm0
         - configMap:
-            name: qwc-feature-info-service-cm1
-          name: qwc-feature-info-service-cm1
-        - configMap:
             name: qwc-feature-info-service-cm2
           name: qwc-feature-info-service-cm2
+        - name: qwc-config-pvc
+          persistentVolumeClaim:
+            claimName: qwc-config-pvc
   test: false
   triggers:
     - type: ConfigChange

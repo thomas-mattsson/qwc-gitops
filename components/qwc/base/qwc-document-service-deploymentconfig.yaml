@@ -38,8 +38,7 @@ spec:
             - mountPath: /srv/qwc_service/fonts
               name: qwc-document-service-claim2
             - mountPath: /srv/qwc_service/config
-              name: qwc-document-service-cm3
-              readOnly: true
+              name: qwc-config-pvc
       restartPolicy: Always
       volumes:
         - configMap:
@@ -54,9 +53,9 @@ spec:
         - name: qwc-document-service-claim2
           persistentVolumeClaim:
             claimName: qwc-document-service-claim2
-        - configMap:
-            name: qwc-document-service-cm3
-          name: qwc-document-service-cm3
+        - name: qwc-config-pvc
+          persistentVolumeClaim:
+            claimName: qwc-config-pvc
   test: false
   triggers:
     - type: ConfigChange
