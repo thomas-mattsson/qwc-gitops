@@ -17,9 +17,6 @@ spec:
     spec:
       securityContext:
         fsGroup: 33
-        capabilities:
-          add:
-            - NET_BIND_SERVICE
       serviceAccountName: qwc-sa
       containers:
         - env:
@@ -33,6 +30,10 @@ spec:
               value: '1'
           image: ' '
           name: qwc-qgis-server
+          securityContext:
+            capabilities:
+              add:
+                - NET_BIND_SERVICE
           volumeMounts:
             # - mountPath: /data
             #   name: qwc-qgis-server-cm0
