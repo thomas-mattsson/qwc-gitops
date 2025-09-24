@@ -149,7 +149,7 @@ spec:
     protocol: TCP
     targetPort: http
   selector:
-    io.kompose.service: qwc-map-service
+    io.kompose.service: qwc-map-viewer
   type: ClusterIP
 ---
 apiVersion: v1
