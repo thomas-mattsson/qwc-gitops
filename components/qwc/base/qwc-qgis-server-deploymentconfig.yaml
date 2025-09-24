@@ -24,6 +24,10 @@ spec:
               value: PRINT_LAYOUT_DIR
             - name: PRINT_LAYOUT_DIR
               value: /layouts
+            - name: QGIS_SERVER_LOG_LEVEL
+              value: '0'
+            - name: DEBUG
+              value: '1'
           image: ' '
           name: qwc-qgis-server
           volumeMounts:
