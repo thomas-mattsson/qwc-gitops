@@ -26,14 +26,11 @@ spec:
               value: my-secret-key
             - name: SERVICE_MOUNTPOINT
               value: /
-          command:
-            - /bin/sh
-            - '-c'
-            - 'HOME=/tmp uwsgi --http-socket 0.0.0.0:9090 --buffer-size $REQ_HEADER_BUFFER_SIZE --processes $UWSGI_PROCESSES --threads $UWSGI_THREADS --plugins python3 $UWSGI_EXTRA --protocol uwsgi --wsgi-disable-file-wrapper --uid $SERVICE_UID --gid $SERVICE_GID --master --chdir /srv/qwc_service --virtualenv /srv/qwc_service/.venv --mount $SERVICE_MOUNTPOINT=server:app --manage-script-name'
           image: ' '
           ports:
             - containerPort: 9090
               protocol: TCP
+              name: http
           name: qwc-map-viewer
           volumeMounts:
             - mountPath: /srv/pg_service.conf
