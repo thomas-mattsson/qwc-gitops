@@ -38,15 +38,10 @@ spec:
               readOnly: true
               subPath: pg_service.conf
             - mountPath: /srv/qwc_service/config
-              name: qwc-map-viewer-cm1
-              readOnly: true
+              name: qwc-config-pvc
             - mountPath: /qwc2/assets
               name: qwc-map-viewer-cm2
               readOnly: true
-            # - mountPath: /etc/uwsgi/uwsgi.ini
-            #   name: uwsgi-ini
-            #   readOnly: true
-              subPath: uwsgi.ini
       restartPolicy: Always
       volumes:
         - configMap:
@@ -56,14 +51,11 @@ spec:
             name: qwc-map-viewer-cm0
           name: qwc-map-viewer-cm0
         - configMap:
-            name: qwc-map-viewer-cm1
-          name: qwc-map-viewer-cm1
-        - configMap:
             name: qwc-map-viewer-cm2
           name: qwc-map-viewer-cm2
-        # - configMap:
-        #     name: uwsgi-ini
-        #   name: uwsgi-ini
+        - name: qwc-config-pvc
+          persistentVolumeClaim:
+            claimName: qwc-config-pvc
   test: false
   triggers:
     - type: ConfigChange
