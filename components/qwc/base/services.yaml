@@ -177,7 +177,7 @@ spec:
     protocol: TCP
     targetPort: http
   selector:
-    io.kompose.service: qwc-ogc-server
+    io.kompose.service: qwc-ogc-service
   type: ClusterIP
 ---
 apiVersion: v1
