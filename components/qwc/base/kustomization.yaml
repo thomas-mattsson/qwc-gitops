@@ -57,3 +57,4 @@ resources:
 - qwc-solr-cm1-configmap.yaml
 - qwc-solr-deployment.yaml
 - qwc-solr-service.yaml
+- qwc-solr-pvc.yaml

@@ -31,9 +31,14 @@ spec:
           volumeMounts:
             - mountPath: /var/solr/data
               name: qwc-solr-cm1
+            - mountPath: /gdi_conf
+              name: qwc-solr-pvc
       restartPolicy: Always
       volumes:
         - configMap:
             name: qwc-solr-cm1
           name: qwc-solr-cm1
+        - name: qwc-solr-pvc
+          persistentVolumeClaim:
+            claimName: qwc-solr-pvc
 
