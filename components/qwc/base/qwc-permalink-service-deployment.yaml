@@ -28,6 +28,10 @@ spec:
             - name: SERVICE_MOUNTPOINT
               value: /api/v1/permalink
           image: sourcepole/qwc-permalink-service:latest-2025-lts
+          ports:
+            - containerPort: 9090
+              protocol: TCP
+              name: http
           name: qwc-permalink-service
           volumeMounts:
             - mountPath: /srv/pg_service.conf

@@ -28,6 +28,10 @@ spec:
             - name: SERVICE_MOUNTPOINT
               value: /api/v1/print
           image: sourcepole/qwc-print-service:latest-2025-lts
+          ports:
+            - containerPort: 9090
+              protocol: TCP
+              name: http
           name: qwc-print-service
           volumeMounts:
             - mountPath: /srv/qwc_service/config

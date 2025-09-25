@@ -28,6 +28,10 @@ spec:
             - name: SERVICE_MOUNTPOINT
               value: /auth
           image: sourcepole/qwc-db-auth:latest-2025-lts
+          ports:
+            - containerPort: 9090
+              protocol: TCP
+              name: http
           name: qwc-auth-service
           volumeMounts:
             - mountPath: /srv/pg_service.conf

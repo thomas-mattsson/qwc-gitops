@@ -32,6 +32,10 @@ spec:
             - name: OUTPUT_CONFIG_PATH
               value: /srv/qwc_service/config-out
           image: sourcepole/qwc-config-generator:latest-2025-lts
+          ports:
+            - containerPort: 9090
+              protocol: TCP
+              name: http
           name: qwc-config-service
           volumeMounts:
             - mountPath: /srv/qwc_service/config-in/default

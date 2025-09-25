@@ -28,6 +28,10 @@ spec:
             - name: SERVICE_MOUNTPOINT
               value: /api/v1/elevation
           image: sourcepole/qwc-elevation-service:latest-2025-lts
+          ports:
+            - containerPort: 9090
+              protocol: TCP
+              name: http
           name: qwc-elevation-service
           volumeMounts:
             - mountPath: /srv/qwc_service/config

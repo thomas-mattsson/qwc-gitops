@@ -34,6 +34,10 @@ spec:
             - name: MAIL_SUPPRESS_SEND
               value: "True"
           image: sourcepole/qwc-admin-gui:latest-2025-lts
+          ports:
+            - containerPort: 9090
+              protocol: TCP
+              name: http
           name: qwc-admin-gui
           volumeMounts:
             - mountPath: /srv/pg_service.conf
