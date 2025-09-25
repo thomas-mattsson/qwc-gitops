@@ -17,6 +17,8 @@ spec:
         io.kompose.service: qwc-solr
     spec:
       serviceAccountName: qwc-sa
+      securityContext:
+        fsGroup: 8983
       containers:
         - command:
             - docker-entrypoint.sh
