@@ -54,7 +54,6 @@ resources:
 - qwc-qgis-server-cm5-configmap.yaml
 - qwc-qgis-server-cm6-configmap.yaml
 - qwc-qgis-server-deployment.yaml
-- qwc-solr-cm1-configmap.yaml
 - qwc-solr-deployment.yaml
 - qwc-solr-service.yaml
 - qwc-solr-pvc.yaml
