@@ -1,0 +1,14 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: qwc
+  namespace: qwc-services
+spec:
+  to:
+    kind: Service
+    name: qwc-api-gateway
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  port:
+    targetPort: '8088'
