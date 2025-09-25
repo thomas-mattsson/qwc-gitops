@@ -30,6 +30,10 @@ spec:
             - name: DEBUG
               value: '1'
           image: sourcepole/qwc-qgis-server:3.40
+          ports:
+            - containerPort: 80
+              protocol: TCP
+              name: http
           name: qwc-qgis-server
           securityContext:
             runAsUser: 0
