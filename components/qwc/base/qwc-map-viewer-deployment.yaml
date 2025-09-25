@@ -41,8 +41,7 @@ spec:
             - mountPath: /srv/qwc_service/config
               name: qwc-config-pvc
             - mountPath: /qwc2/assets
-              name: qwc-map-viewer-cm2
-              readOnly: true
+              name: qwc-map-viewer-assets-pvc
       restartPolicy: Always
       volumes:
         - configMap:
@@ -51,9 +50,9 @@ spec:
                 path: pg_service.conf
             name: qwc-map-viewer-cm0
           name: qwc-map-viewer-cm0
-        - configMap:
-            name: qwc-map-viewer-cm2
-          name: qwc-map-viewer-cm2
+        - name: qwc-map-viewer-assets-pvc
+          persistentVolumeClaim:
+            claimName: qwc-map-viewer-assets-pvc
         - name: qwc-config-pvc
           persistentVolumeClaim:
             claimName: qwc-config-pvc
