@@ -37,6 +37,7 @@ resources:
 - qwc-legend-service-deployment.yaml
 - qwc-map-viewer-cm0-configmap.yaml
 - qwc-map-viewer-deployment.yaml
+- qwc-map-viewer-assets-pvc.yaml
 - qwc-mapinfo-service-cm0-configmap.yaml
 - qwc-mapinfo-service-deployment.yaml
 - qwc-ogc-service-deployment.yaml
