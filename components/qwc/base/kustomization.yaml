@@ -35,6 +35,7 @@ resources:
 - qwc-fulltext-search-service-cm0-configmap.yaml
 - qwc-fulltext-search-service-deployment.yaml
 - qwc-legend-service-deployment.yaml
+- qwc-legend-service-demo-cm.yaml
 - qwc-map-viewer-cm0-configmap.yaml
 - qwc-map-viewer-deployment.yaml
 - qwc-map-viewer-assets-pvc.yaml

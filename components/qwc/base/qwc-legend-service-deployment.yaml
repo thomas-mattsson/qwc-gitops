@@ -32,9 +32,15 @@ spec:
           volumeMounts:
             - mountPath: /srv/qwc_service/config
               name: qwc-config-pvc
+            - mountPath: /legends/qwc_demo
+              name: qwc-legend-service-demo-cm
+              readOnly: true
       restartPolicy: Always
       volumes:
         - name: qwc-config-pvc
           persistentVolumeClaim:
             claimName: qwc-config-pvc
+        - configMap:
+            name: qwc-legend-service-demo-cm
+          name: qwc-legend-service-demo-cm
 
