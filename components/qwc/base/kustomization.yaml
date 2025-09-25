@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
 - services.yaml
 - config-pvc.yaml
-- data-pvc.yaml
 - qwc-qgis-server-pvc.yaml
 - qwc-admin-gui-cm0-configmap.yaml
 - qwc-admin-gui-deployment.yaml
