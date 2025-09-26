@@ -18,7 +18,7 @@ spec:
     spec:
       securityContext:
         fsGroup: 33
-      serviceAccountName: qwc-sa-nonroot-v2
+      serviceAccountName: qwc-sa
       containers:
         - env:
             - name: FCGID_EXTRA_ENV
@@ -37,10 +37,6 @@ spec:
               protocol: TCP
               name: http
           name: qwc-qgis-server
-          securityContext:
-            capabilities:
-              add:
-                - NET_BIND_SERVICE
           volumeMounts:
             - mountPath: /data
               name: qwc-qgis-server-pvc
