@@ -17,8 +17,8 @@ spec:
         io.kompose.service: qwc-config-service
     spec:
       serviceAccountName: qwc-sa
-      # securityContext:
-      #   fsGroup: 33
+      securityContext:
+        fsGroup: 33
       containers:
         - env:
             - name: GENERATE_DYNAMIC_KVRELS

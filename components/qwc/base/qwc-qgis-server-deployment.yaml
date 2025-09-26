@@ -16,8 +16,8 @@ spec:
       labels:
         io.kompose.service: qwc-qgis-server
     spec:
-      # securityContext:
-      #   fsGroup: 33
+      securityContext:
+        fsGroup: 33
       serviceAccountName: qwc-sa-nonroot-v2
       containers:
         - env:
@@ -25,18 +25,19 @@ spec:
               value: PRINT_LAYOUT_DIR
             - name: PRINT_LAYOUT_DIR
               value: /layouts
+            - name: PORT
+              value: '8080'
             - name: QGIS_SERVER_LOG_LEVEL
               value: '0'
             - name: DEBUG
               value: '1'
           image: sourcepole/qwc-qgis-server:3.40
           ports:
-            - containerPort: 80
+            - containerPort: 8080
               protocol: TCP
               name: http
           name: qwc-qgis-server
           securityContext:
-            runAsUser: 0
             capabilities:
               add:
                 - NET_BIND_SERVICE
