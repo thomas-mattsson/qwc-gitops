@@ -31,7 +31,7 @@ spec:
               value: '0'
             - name: DEBUG
               value: '1'
-          image: sourcepole/qwc-qgis-server:3.40
+          image: sourcepole/qwc-qgis-server:3.44
           ports:
             - containerPort: 8080
               protocol: TCP
