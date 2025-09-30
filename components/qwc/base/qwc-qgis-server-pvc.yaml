@@ -6,6 +6,6 @@ spec:
   storageClassName: ocs-storagecluster-cephfs
   accessModes:
     - ReadWriteMany
-  resources:
-    requests:
-      storage: 100Mi
+  # resources:
+  #   requests:
+  #     storage: 100Mi
