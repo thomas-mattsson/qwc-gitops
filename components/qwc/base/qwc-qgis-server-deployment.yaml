@@ -29,8 +29,12 @@ spec:
               value: '8080'
             - name: QGIS_SERVER_LOG_LEVEL
               value: '0'
+            - name: QGIS_SERVER_LOG_STDERR
+              value: '1'
             - name: DEBUG
               value: '1'
+            - name: QGIS_DEBUG
+              value: '4'
           image: sourcepole/qwc-qgis-server:3.44
           ports:
             - containerPort: 8080
